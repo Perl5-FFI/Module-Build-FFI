@@ -15,6 +15,7 @@ $modules{$_} = $_ for qw(
   File::ShareDir
   File::ShareDir::Install
   Module::Build
+  Test2::Suite
   Test::More
 );
 

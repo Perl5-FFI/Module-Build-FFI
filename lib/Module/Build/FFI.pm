@@ -275,6 +275,11 @@ sub _ffi_headers ($$)
   \@headers;
 }
 
+sub _share_dir
+{
+  File::ShareDir::dist_dir('Module-Build-FFI')
+}
+
 sub _ffi_include_dirs ($$)
 {
   my($self, $dir) = @_;
@@ -283,7 +288,7 @@ sub _ffi_include_dirs ($$)
 
   push @includes, grep { -d $_ } ref $self->ffi_include_dir ? @{ $self->ffi_include_dir } : ($self->ffi_include_dir);
 
-  push @includes, $ENV{FFI_PLATYPUS_INCLUDE_DIR} || File::Spec->catdir(File::ShareDir::dist_dir('Module-Build-FFI'), 'include');
+  push @includes, $ENV{FFI_PLATYPUS_INCLUDE_DIR} || File::Spec->catdir(_share_dir, 'include');
 
   push @includes, ref($self->include_dirs) ? @{ $self->include_dirs } : $self->include_dirs
     if defined $self->include_dirs;
