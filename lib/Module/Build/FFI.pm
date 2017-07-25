@@ -3,11 +3,11 @@ package Module::Build::FFI;
 use strict;
 use warnings;
 use ExtUtils::CBuilder;
-use File::Glob       qw( bsd_glob );
-use File::Spec       ();
-use File::ShareDir   ();
-use File::Path       ();
-use Text::ParseWords ();
+use File::Glob           qw( bsd_glob );
+use File::Spec           ();
+use File::ShareDir::Dist qw( dist_share );
+use File::Path           ();
+use Text::ParseWords     ();
 use Config;
 use base qw( Module::Build );
 
@@ -277,7 +277,7 @@ sub _ffi_headers ($$)
 
 sub _share_dir
 {
-  File::ShareDir::dist_dir('Module-Build-FFI')
+  dist_share('Module-Build-FFI') or die "unable to find dist share directory";
 }
 
 sub _ffi_include_dirs ($$)

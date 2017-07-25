@@ -3,8 +3,9 @@ sudo: false
 
 install:
   - perlbrew list
-  - dzil authordeps --missing | cpanm -n
-  - dzil listdeps   --missing | cpanm -n
+  - ./maint/travis-install-alienbuild
+  - dzil -I. authordeps --missing | cpanm -n
+  - dzil -I. listdeps   --missing | cpanm -n
 
 perl:
   - "5.14"
@@ -13,6 +14,7 @@ perl:
   - "5.20"
   - "5.22"
   - "5.24"
+  - "5.26"
 
 script:
-  - dzil test -v
+  - dzil -I. test -v
