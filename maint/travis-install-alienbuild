@@ -8,7 +8,7 @@ rm -rf /tmp/File-ShareDir-dist
 cpanm -n Dist::Zilla
 
 git clone --depth 2 https://github.com/plicease/File-ShareDir-Dist.git /tmp/File-ShareDir-dist
-cd /tmp/Alien-Build
+cd /tmp/File-ShareDir-dist
 dzil authordeps --missing | cpanm -n
 dzil listdeps   --missing | cpanm -n
 dzil install --install-command 'cpanm -n -v .'
