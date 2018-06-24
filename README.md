@@ -142,16 +142,16 @@ Defined in `ffi_util.h`
 
     \[version 0.04\]
 
-    This is the [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus) (prior to version 0.15 it was the 
-    [FFI::Util](https://metacpan.org/pod/FFI::Util) version number) version number multiplied by 100 (so it 
+    This is the [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus) (prior to version 0.15 it was the
+    [FFI::Util](https://metacpan.org/pod/FFI::Util) version number) version number multiplied by 100 (so it
     would be 4 for 0.04 and 101 for 1.01).
 
 - FFI\_UTIL\_EXPORT
 
     \[version 0.04\]
 
-    The appropriate attribute needed to export functions from shared 
-    libraries / DLLs.  For now this is only necessary on Windows when using 
+    The appropriate attribute needed to export functions from shared
+    libraries / DLLs.  For now this is only necessary on Windows when using
     Microsoft Visual C++, but it may be necessary elsewhere in the future.
 
 # METHODS
