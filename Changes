@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Update ffi_dylib for darwin
 
 0.47      2017-07-26 07:41:06 -0400
   - Migrate from File::ShareDir to File::ShareDir::Dist
