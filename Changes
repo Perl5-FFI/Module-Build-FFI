@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Merge Module::Build::FFI::Pascal from FFI-Platypus-Lang-Pascal
+    into this dist
 
 0.48      2018-06-24 00:12:42 -0400
   - Update ffi_dylib for darwin
