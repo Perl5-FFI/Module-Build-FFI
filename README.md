@@ -1,4 +1,4 @@
-# Module::Build::FFI [![Build Status](https://secure.travis-ci.org/plicease/Module-Build-FFI.png)](http://travis-ci.org/plicease/Module-Build-FFI)
+# Module::Build::FFI [![Build Status](https://secure.travis-ci.org/Perl5-FFI/Module-Build-FFI.png)](http://travis-ci.org/Perl5-FFI/Module-Build-FFI)
 
 Build Perl extensions in C with FFI
 
