@@ -3,7 +3,6 @@ sudo: false
 
 install:
   - perlbrew list
-  - ./maint/travis-install-file-sharedir-dist
   - dzil -I. authordeps --missing | cpanm -n
   - dzil -I. listdeps   --missing | cpanm -n
 
@@ -15,6 +14,7 @@ perl:
   - "5.22"
   - "5.24"
   - "5.26"
+  - "5.28"
 
 script:
   - dzil -I. test -v
