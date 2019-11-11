@@ -80,10 +80,10 @@ Returns true if Free Pascal is available.
 sub ffi_have_compiler
 {
   my($self) = @_;
-  
+
   my $fpc = which('fpc');
   my $ppumove = which('ppumove');
-  
+
   return (!!$fpc) && (!!$ppumove);
 }
 
@@ -104,7 +104,7 @@ sub ffi_build_dynamic_lib
 
   die "multiple directories not supported by ", __PACKAGE__
     if @$src_dir > 1;
-    
+
   $src_dir = $src_dir->[0];
   my $lib;
   my %lib = map { $_ => 1 } @{ $self->ffi_pascal_lib };
@@ -112,12 +112,12 @@ sub ffi_build_dynamic_lib
   do {
     local $CWD = $src_dir;
     print "cd $CWD\n";
-  
+
     $target_dir = $src_dir unless defined $target_dir;
     my @sources = bsd_glob("*.pas");
-  
+
     return unless @sources;
-  
+
     my $fpc = which('fpc');
     my $ppumove = which('ppumove');
 
@@ -143,27 +143,27 @@ sub ffi_build_dynamic_lib
         $lib = $src;
         next;
       }
-    
+
       my @cmd = (
         $fpc,
         @compiler_flags,
         @{ $self->ffi_pascal_extra_compiler_flags },
         $src
       );
-    
+
       print "@cmd\n";
       system @cmd;
       exit 2 if $?;
-    
+
       my $ppu = $src;
       $ppu =~ s{\.pas$}{.ppu};
-    
+
       unless(-r $ppu)
       {
         print STDERR "unable to find $ppu after compile\n";
         exit 2;
       }
-    
+
       push @ppu, $ppu;
     }
 
@@ -213,26 +213,26 @@ sub ffi_build_dynamic_lib
     }
 
   };
-  
+
   print "cd $CWD\n";
-  
+
   my($from) = map { bsd_glob("$src_dir/*.$_") } Module::Build::FFI->ffi_dlext;
-  
+
   unless(defined $from)
   {
     print STDERR "unable to find shared library\n";
     exit 2;
   }
-  
+
   print "chmod 0755 $from\n";
   chmod 0755, $from;
-  
+
   my $ext = $Config{dlext};
   foreach my $try (Module::Build::FFI->ffi_dlext)
   {
     $ext = $1 if $from =~ /\.($try)/;
   }
-  
+
   my $dll = File::Spec->catfile($target_dir, "$name.$ext");
 
   if($from ne $dll)
@@ -243,7 +243,7 @@ sub ffi_build_dynamic_lib
       exit 2;
     };
   }
-  
+
   $dll;
 }
 
