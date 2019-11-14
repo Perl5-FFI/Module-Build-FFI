@@ -1,6 +1,6 @@
 # Module::Build::FFI [![Build Status](https://secure.travis-ci.org/Perl5-FFI/Module-Build-FFI.png)](http://travis-ci.org/Perl5-FFI/Module-Build-FFI)
 
-Build Perl extensions in C with FFI
+(Deprecated) Build Perl extensions in C with FFI
 
 # SYNOPSIS
 
@@ -47,6 +47,9 @@ Finally, use it from your perl script or module:
     Foo::Bar::hello_world();  # prints "hello world\n"
 
 # DESCRIPTION
+
+**Note**: This module is deprecated, please see [FFI::Build](https://metacpan.org/pod/FFI::Build) for another
+way to bundle C/C++ code with your Perl distribution.
 
 Module::Build variant for writing Perl extensions in C and FFI (sans XS).
 

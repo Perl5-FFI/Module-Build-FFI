@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Officialy deprecated.  See FFI::Build for alternatives.
 
 0.50      2019-11-11 16:25:09 -0700
   - Merge Module::Build::FFI::Rust from FFI-Platypus-Lang-Rust
