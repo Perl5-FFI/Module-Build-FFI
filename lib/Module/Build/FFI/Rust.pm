@@ -9,9 +9,7 @@ use File::chdir;
 use File::Copy qw( copy );
 use base qw( Module::Build::FFI );
 
-our $VERSION = '0.06';
-
-# ABSTRACT: Build Perl extensions in Rust with FFI
+# ABSTRACT: (Deprecated) Build Perl extensions in Rust with FFI
 # VERSION
 
 =head1 DESCRIPTION
