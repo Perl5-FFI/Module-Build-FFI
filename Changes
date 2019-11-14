@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.51      2019-11-14 13:09:20 -0700
   - Officialy deprecated.  See FFI::Build for alternatives.
 
 0.50      2019-11-11 16:25:09 -0700
