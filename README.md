@@ -42,9 +42,9 @@ Attach it to Perl in your main module (`lib/Foo/Bar.pm`):
 ```perl
 package Foo::Bar;
 
-use FFI::Platypus;
+use FFI::Platypus 1.00;
 
-my $ffi = FFI::Platypus->new;
+my $ffi = FFI::Platypus->new( api => 1 );
 $ffi->package;  # search for symbols in your bundled C code
 $ffi->attach( hello_world => [] => 'void');
 ```
@@ -88,10 +88,10 @@ Module::Build variant for writing Perl extensions in C and FFI (sans XS).
 
     ```perl
     use Test::More;
-    use FFI::Platypus;
+    use FFI::Platypus 1.00;
     use FFI::CheckLib;
 
-    FFI::Platypus->new->lib(find_lib lib => 'test', libpath => 'libtest');
+    FFI::Platypus->new( api => 1 )->lib(find_lib lib => 'test', libpath => 'libtest');
     ```
 
     \[version 0.18\]
