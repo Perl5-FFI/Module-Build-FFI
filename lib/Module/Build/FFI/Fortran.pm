@@ -9,11 +9,8 @@ use Text::ParseWords qw( shellwords );
 use File::Spec;
 use base qw( Module::Build::FFI );
 
-our $VERSION = '0.10';
-
-=head1 NAME
-
-Module::Build::FFI::Fortran - Build Perl extensions in Fortran with FFI
+# ABSTRACT: (Deprecated) Build Perl extensions in Fortran with FFI
+# VERSION
 
 =head1 DESCRIPTION
 
@@ -215,10 +212,6 @@ sub _f77_testcompiler
 
 __END__
 
-=head1 EXAMPLES
-
-TODO
-
 =head1 SEE ALSO
 
 =over 4
@@ -232,17 +225,6 @@ The Core Platypus documentation.
 General MB class for FFI / Platypus.
 
 =back
-
-=head1 AUTHOR
-
-Graham Ollis E<lt>plicease@cpan.orgE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2015 by Graham Ollis.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
 
 =cut
 

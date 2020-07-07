@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Fix incorrectly versioned Module::Build::FFI::Fortran
+    so that it matches the other versions in this dist.
 
 0.53      2020-07-07 14:26:06 -0600
   - Moved Module::Build::FFI::Fortran into this dist
