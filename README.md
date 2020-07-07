@@ -1,4 +1,4 @@
-# Module::Build::FFI [![Build Status](https://secure.travis-ci.org/Perl5-FFI/Module-Build-FFI.png)](http://travis-ci.org/Perl5-FFI/Module-Build-FFI)
+# Module::Build::FFI [![Build Status](https://travis-ci.org/Perl5-FFI/Module-Build-FFI.svg)](http://travis-ci.org/Perl5-FFI/Module-Build-FFI)
 
 (Deprecated) Build Perl extensions in C with FFI
 
@@ -6,45 +6,55 @@
 
 In your `Build.PL`
 
-    use Modue::Build::FFI 0.04;
-    Module::Build::FFI->new(
-      module_name => 'Foo::Bar',
-      ...
-    )->create_build_script;
+```perl
+use Modue::Build::FFI 0.04;
+Module::Build::FFI->new(
+  module_name => 'Foo::Bar',
+  ...
+)->create_build_script;
+```
 
 or `dist.ini`:
 
-    [ModuleBuild]
-    mb_class = Module::Build::FFI
-    
-    [Prereqs / ConfigureRequires]
-    Module::Build::FFI = 0.04
+```
+[ModuleBuild]
+mb_class = Module::Build::FFI
+
+[Prereqs / ConfigureRequires]
+Module::Build::FFI = 0.04
+```
 
 Put your .c and .h files in `ffi` (`ffi/example.c`):
 
-    #include <ffi_util.h>
-    #include <stdio.h>
-    
-    FFI_UTIL_EXPORT void
-    print_hello(void)
-    {
-      printf("hello world\n");
-    }
+```
+#include <ffi_util.h>
+#include <stdio.h>
+
+FFI_UTIL_EXPORT void
+print_hello(void)
+{
+  printf("hello world\n");
+}
+```
 
 Attach it to Perl in your main module (`lib/Foo/Bar.pm`):
 
-    package Foo::Bar;
-    
-    use FFI::Platypus;
-    
-    my $ffi = FFI::Platypus->new;
-    $ffi->package;  # search for symbols in your bundled C code
-    $ffi->attach( hello_world => [] => 'void');
+```perl
+package Foo::Bar;
+
+use FFI::Platypus;
+
+my $ffi = FFI::Platypus->new;
+$ffi->package;  # search for symbols in your bundled C code
+$ffi->attach( hello_world => [] => 'void');
+```
 
 Finally, use it from your perl script or module:
 
-    use Foo::Bar;
-    Foo::Bar::hello_world();  # prints "hello world\n"
+```perl
+use Foo::Bar;
+Foo::Bar::hello_world();  # prints "hello world\n"
+```
 
 # DESCRIPTION
 
@@ -76,11 +86,13 @@ Module::Build variant for writing Perl extensions in C and FFI (sans XS).
     can use to test your FFI module with.  You can use FFI::CheckLib to
     find the library from your test:
 
-        use Test::More;
-        use FFI::Platypus;
-        use FFI::CheckLib;
-        
-        FFI::Platypus->new->lib(find_lib lib => 'test', libpath => 'libtest');
+    ```perl
+    use Test::More;
+    use FFI::Platypus;
+    use FFI::CheckLib;
+
+    FFI::Platypus->new->lib(find_lib lib => 'test', libpath => 'libtest');
+    ```
 
     \[version 0.18\]
 
@@ -106,11 +118,13 @@ Module::Build variant for writing Perl extensions in C and FFI (sans XS).
     not fatal.  Your tests need to be written in such a way that any that use
     libtest are skipped when it is not there.
 
-        use Test::More;
-        use FFI::CheckLib;
-        
-        plan skip_all => 'test requires a compiler'
-          unless find_lib lib => 'test', libpath => 'libtest';
+    ```perl
+    use Test::More;
+    use FFI::CheckLib;
+
+    plan skip_all => 'test requires a compiler'
+      unless find_lib lib => 'test', libpath => 'libtest';
+    ```
 
     If you do not want to support environments without a compiler you can set
     this property to `1` and you won't need to have that check in your test
@@ -120,7 +134,9 @@ Module::Build variant for writing Perl extensions in C and FFI (sans XS).
 
 ## ffi
 
-    ./Build ffi
+```
+./Build ffi
+```
 
 This builds any C files that are bundled with your distribution (usually
 in the `ffi` directory).  If there is no `ffi` directory, then this
@@ -130,7 +146,9 @@ This action is triggered automatically before `./Build build`.
 
 ## libtest
 
-    ./Build libtest
+```
+./Build libtest
+```
 
 This builds libtest.  If you do not have a libtest directory, then
 this action does nothing.
@@ -163,7 +181,9 @@ Defined in `ffi_util.h`
 
 \[version 0.18\]
 
-    my $has_compiler = $mb->ffi_have_compiler;
+```perl
+my $has_compiler = $mb->ffi_have_compiler;
+```
 
 Returns true if a C or C++ compiler is available.
 
@@ -175,8 +195,10 @@ Override for other foreign language subclasses.
 
 \[version 0.18\]
 
-    my $dll_path = $mb->ffi_build_dynamic_lib($src_dir, $name, $target_dir);
-    my $dll_path = $mb->ffi_build_dynamic_lib($src_dir, $name);
+```perl
+my $dll_path = $mb->ffi_build_dynamic_lib($src_dir, $name, $target_dir);
+my $dll_path = $mb->ffi_build_dynamic_lib($src_dir, $name);
+```
 
 Compiles the C and C++ source in the `$src_dir` and link it into a
 dynamic library with base name of `$name.$Config{dlext}`.  If
@@ -187,7 +209,9 @@ Override for other foreign language subclasses.
 
 ## ffi\_dlext
 
-    my @dlext = Module::Build::FFI->ffi_dlext;
+```perl
+my @dlext = Module::Build::FFI->ffi_dlext;
+```
 
 Returns a list of legal dynamic library extensions.  `$Config{dlext}` is good,
 but many platforms use more than one extension for dynamic libraries.  For
