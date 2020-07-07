@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Moved Module::Build::FFI::Fortran into this dist
 
 0.52      2019-11-14 16:06:07 -0700
   - Meta fixes.
